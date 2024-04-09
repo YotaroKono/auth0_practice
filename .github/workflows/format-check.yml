@@ -1,0 +1,17 @@
+name: Format Check
+
+on: [push, pull_request]
+
+jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '20'
+      - name: Install Dependencies
+        run: npm install
+      - name: Check Formatting
+        run: npx prettier --check .
